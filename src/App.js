@@ -1,12 +1,13 @@
-import Users from "./components/Users/Users";
-import Posts from "./components/Posts/Posts";
+import Users from "./components/users/Users";
+
 
 export default function App() {
     return (
         <div>
 
-            <Users/>
-            <Posts/>
+
+        <Users/>
+
         </div>
     );
 }
