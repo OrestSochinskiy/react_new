@@ -1,11 +1,11 @@
-import User from "../user/User";
+import Post from "../user/User";
 
-export default function Users({items,appFn}) {
+export default function Posts({items,appFn}) {
 
     return(
         <div>
         {
-            items.map(value => <User key = {value.id} item = {value} appFn={appFn}/>)
+            items.map(value => <Post key = {value.id} item = {value} appFn={appFn}/>)
         }
         </div>
     );

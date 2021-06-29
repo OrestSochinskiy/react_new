@@ -1,4 +1,4 @@
-export default function User({item,appFn}) {
+export default function Post({item,appFn}) {
 
     return(
         <div>
