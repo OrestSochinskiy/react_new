@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect, useState} from 'react';
+import {getUser, getUsers} from './services/API';
+import Users from "./component/users/Users";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App(props) {
+    let [user, setUser] = useState( );
+    let appFn = (id) => {
+        getUser(id).then(value => setUser(value.data))
+    }
+
+
+    let [users, setUsers] = useState([]);
+    useEffect(() => {
+        getUsers().then(value => setUsers(value.data));
+    }, [])
+
+    return (
+        <div>
+            <Users items={users} appFn={appFn}/>
+            <hr/>
+            {
+                user && <div> {user.title}</div>
+            }
+            <hr/>
+        </div>
+    );
 }
-
-export default App;
