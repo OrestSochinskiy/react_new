@@ -13,7 +13,7 @@ export default function Users() {
                 setUsers([...value])
             })
         }
-    ,[])
+    ,[]);
     return(
         <div>
             {
