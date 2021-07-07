@@ -24,7 +24,6 @@ const NestedChild = () => {
     }, [])
 
 
-    console.log('posts', posts);
 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json().then(data => {
@@ -34,7 +33,6 @@ const NestedChild = () => {
             })
         }))
     }, [])
-    console.log("users", users);
 
     return (
         <header className="App-header">
@@ -69,11 +67,11 @@ const NestedChild = () => {
             </p>
 
             <ul>
-                {true} || {posts.map(post => (<li>{post.title}</li>))}
+                {posts && posts.map(post => (<li>{post.title}</li>))}
             </ul>
 
             <ul>
-                {true} || {users.map(user => (<li>{user.name}</li>))}
+                {users && users.map(user => (<li>{user.name}</li>))}
             </ul>
 
             <a
