@@ -53,14 +53,14 @@ const reducer = (state = initialState, action) => {
         }
 
 
-        // case "INP" :{
-        //     return {
-        //         ...state,
-        //         counter: {
-        //             value: state.counter.value + input.value             ?????????????
-        //         }
-        //     }
-        // }
+        case "INP" :{
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value + action.payload
+                }
+            }
+        }
         default:
             return state
     }

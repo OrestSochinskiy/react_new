@@ -1,13 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import {useSelector, Provider, useDispatch} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const NestedChild = () => {
     const counter = useSelector(({counter: {value}}) => value)
     const posts = useSelector(({posts}) => posts)
     const users = useSelector(({users}) => users)
     const dispatch = useDispatch()
+
+
+    const [input,setInput] = useState('')
+    // const [xxx,setXxx] = useState(0)
+    // const zzz = () => setXxx(input)
+
 
 
     const fetchPosts = async () => {
@@ -24,7 +30,6 @@ const NestedChild = () => {
     }, [])
 
 
-
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json().then(data => {
             dispatch({
@@ -33,6 +38,14 @@ const NestedChild = () => {
             })
         }))
     }, [])
+
+    const onChangeInput = ({target: {value}}) => setInput(value);
+    const zzz = () => {
+        dispatch({
+            type: "INP",
+            payload: +input
+        })
+    }
 
     return (
         <header className="App-header">
@@ -54,12 +67,13 @@ const NestedChild = () => {
             }}>RESET
             </button>
 
+            <input type="number" value={input} onChange={onChangeInput}/>
+            <hr/>
+            <button onClick={zzz}></button>
 
-            {/*<button onClick={() => {*/}
-            {/*        dispatch({type:"INP"})*/}
-            {/*}}>                                                 ???*/}
-            {/*    <input className={'input'}></input>*/}
-            {/*</button>*/}
+
+
+
 
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
